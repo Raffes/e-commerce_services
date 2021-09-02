@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="row" #form="ngForm">
+            <h1>Cadastrar conta</h1>
+            <div class="col-12 col-md-5">
+                    <div class="form-floating mb-3">
+                    
+                        <input type="text" class="form-control" id="CadastrarNomeUsuario"  formControlName="displayName" maxlength="12" required autofocus>
+                    <label for="CadastrarNome">Nome</label>
+        
+                    </div>
+                </div>
+                <div class="col-12 col-md-7">
+                    <div class="form-floating mb-3">
+                    
+                        <input type="text" class="form-control" id="CadastrarSobrenomeUsuario" formControlName="lastname" maxlength="30" required>
+                    <label for="CadastrarSobrenome">Sobrenome</label>
+        
+                    </div>
+                </div>
+            
+            <div class="col-12 col-md-6">
+                <div class="form-floating mb-3">
+                
+                    <input type="number" class="form-control" id="cadastrarCPFUsuario" formControlName="cpf" maxlength="11">
+                    <label for="cadastrarCPF">CPF</label>
+    
+                </div>
+            </div>
+            
+            <div class="col-12 col-md-6">
+                <div class="form-floating mb-3">
+                
+                    <input type="number" class="form-control" id="cadastrarTelefoneUsuario" formControlName="phoneNumber" maxlength="11">
+                    <label for="cadastrarTelefoneUsuario">Telefone</label>
+    
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                
+                <input type="email" class="form-control" id="cadastrarEmailUsuario" formControlName="email" #userEmail required maxlength="30">
+                <label for="cadastrarEmailUsuario">Email</label>
+
+            </div>
+
+            <div class="form-floating mb-3">
+                
+                <input type="password" class="form-control" id="cadastrarSenhaUsuario" formControlName="password" #userPassword required maxlength="12">
+                <label for="cadastrarSenhaUsuario">Senha</label>
+
+            </div>
+            <div class="col-12 text-end">
+                <div class="form-floating mb-3">
+                    
+                    <input type="password" class="form-control" id="confirmeSenhaUsuario" required maxlength="12">
+                    <label for="confirmeSenhaUsuario">Redigite a Senha</label>
+
+                </div>
+            </div>
+
+            <div class="col-12 col-md-12 text-end">
+                <button type="submit" class="btn btn-lg btn-danger" [disabled]="!userForm.valid">
+                    Cadastrar
+                </button>
+            </div>
+
+            <!-- <div class="col-12 col-md-12 text-end">
+                <button type="submit" class="btn btn-lg btn-danger" (click)="authUserService.SignUp(userEmail.value, userPassword.value)" [disabled]="!userForm.valid">
+                    Cadastrar
+                </button>
+            </div> -->
+            
+
+            <p class="mt-3 text-center">
+                Já é cadastrado? <a href="login">Clique aqui</a> para acessar sua conta.
+            </p>
+
+        </form>
+    </div>
+    </div>
+</div>

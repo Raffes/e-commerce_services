@@ -1,0 +1,354 @@
+<div class="d-flex flex-column min-vh-100"> 
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary--purple border-bottom shadow-sm mb-3" *ngIf="authService.userState as User">
+    <div class="container">
+  
+      <a class="navbar-brand" href="home/{{ User.uid }}">
+        <img class="logo-servise__nav" src="assets/images/logo/logo_service_1.png" alt="logo service">
+      </a>
+  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse">
+  
+        <ul class="navbar-nav flex-grow-1">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle cl-primary--color fs-5 mt-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categoria
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Produtos</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Serviços</a></li>
+            </ul>
+          </li>
+        </ul>
+  
+        <div class="align-self-end" >
+  
+          <ul class="navbar-nav">
+            <li class="nav-item me-5">
+              <span class="badge rounded-pill bg-light color-primary--purple position-absolute ms-3 mt-0" title="5 produtos(s) no carrinho">
+                <small>3</small>
+              </span>
+              <a href="shoppingCart" class="nav-link">
+                <i class="bi bi-cart fs-5"></i>
+                
+              </a>
+            </li>
+            <li class="nav-item me-5">
+              <a href="userFavorites" class="nav-link">
+                <i class="bi-suit-heart fs-5"></i>
+                
+              </a>
+            </li>
+
+            <li class="nav-item dropdown" *ngIf="authService.userState as User">
+              <a class="nav-link dropdown-toggle fs-5" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle fs-5 me-2" ></i> 
+                {{ user.displayName }}
+                
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item" routerLink="/home/userOrders/{{ User.uid }}">
+                    <i class="bi bi-truck fs-6 me-2"></i> Pedidos
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/home/userProducts/{{ User.uid }}">
+                    <i class="bi bi-basket fs-6 me-2"></i> Vendas
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/home/userInformation/{{ User.uid }}">
+                    <i class="bi bi-tools fs-6 me-2"></i> Dados Pessoais
+                  </a>
+                </li> 
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <a class="dropdown-item" (click)="authService.SignOut()">
+                    <i class="bi-door-open fs-6 me-2"></i>Sair
+                  </a>
+                </li>
+              </ul>
+            </li>
+  
+          </ul>
+  
+        </div>
+  
+      </div>
+    </div>
+</nav>
+
+<div class="container h-body">
+    <h1>Pedidos</h1>
+    <hr>
+    <div class="row gx-3 d-flex justify-content-center mb-3">
+        <div class="col-8">
+            <form action="#" class="row mb-3">
+                <div class="col-12 col-md-6 mb-3">
+                    <div class="form-floating">
+                        <select class="form-select">
+                            <option value="30">últimos 30 dias</option>
+                            <option value="60">últimos 60 dias</option>
+                            <option value="90">últimos 90 dias</option>
+                            <option value="180">últimos 180 dias</option>
+                            <option value="360">últimos 360 dias</option>
+                            <option value="9999" selected>Todo o período</option>
+                        </select>
+                        <label>Período</label>
+                    </div>
+                </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-floating">
+                            <select class="form-select">
+                                <option value="1" selected>Mais novos primeiro</option>
+                                <option value="2">Mais antigos primeiro</option>
+                            </select>
+                            <label>Ordenação</label>
+                        </div>
+                    </div>
+            </form>
+
+            <div class="accordion" id="divPedidos">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pedido000010">
+                      <b>Pedido 000010</b>
+                      <span class="mx-1">(realizado em 11/10/2020)</span>
+                    </button>
+                  </h2>
+                  <div id="pedido000010" class="accordion-collapse collapse" data-bs-parent="#divPedidos">
+                    <div class="accordion-body">
+                       <table class="table">
+                           <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th class="text-end">R$ Unit.</th>
+                                    <th class="text-center">Qtde.</th>
+                                    <th class="text-end">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Cachecol</td>
+                                    <td class="text-end">32,00</td>
+                                    <td class="text-center">4</td>
+                                    <td class="text-end">234,00</td>
+                                </tr>
+                                <tr>
+                                    <td>Cachecol</td>
+                                    <td class="text-end">32,00</td>
+                                    <td class="text-center">4</td>
+                                    <td class="text-end">234,00</td>
+                                </tr>
+                                <tr>
+                                    <td>Cachecol</td>
+                                    <td class="text-end">32,00</td>
+                                    <td class="text-center">4</td>
+                                    <td class="text-end">234,00</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th class="text-end" colspan="3">Valor dos Produtos:</th>
+                                    <td class="text-end">890,78</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-end" colspan="3">Valor do Frete:</th>
+                                    <td class="text-end">23,00</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-end" colspan="3">Valor a Pagar:</th>
+                                    <td class="text-end">890,78</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-end" colspan="3">Forma de Pagamento:</th>
+                                    <td class="text-end">Nubank</td>
+                                </tr>
+                            </tfoot>
+                       </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pedido000011">
+                        <b>Pedido 000010</b>
+                        <span class="mx-1">(realizado em 11/10/2020)</span>
+                      </button>
+                    </h2>
+                    <div id="pedido000011" class="accordion-collapse collapse" data-bs-parent="#divPedidos">
+                      <div class="accordion-body">
+                         <table class="table">
+                             <thead>
+                                  <tr>
+                                      <th>Produto</th>
+                                      <th class="text-end">R$ Unit.</th>
+                                      <th class="text-center">Qtde.</th>
+                                      <th class="text-end">Subtotal</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>Cachecol</td>
+                                      <td class="text-end">32,00</td>
+                                      <td class="text-center">4</td>
+                                      <td class="text-end">234,00</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Cachecol</td>
+                                      <td class="text-end">32,00</td>
+                                      <td class="text-center">4</td>
+                                      <td class="text-end">234,00</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Cachecol</td>
+                                      <td class="text-end">32,00</td>
+                                      <td class="text-center">4</td>
+                                      <td class="text-end">234,00</td>
+                                  </tr>
+                              </tbody>
+                              <tfoot>
+                                  <tr>
+                                      <th class="text-end" colspan="3">Valor dos Produtos:</th>
+                                      <td class="text-end">890,78</td>
+                                  </tr>
+                                  <tr>
+                                      <th class="text-end" colspan="3">Valor do Frete:</th>
+                                      <td class="text-end">23,00</td>
+                                  </tr>
+                                  <tr>
+                                      <th class="text-end" colspan="3">Valor a Pagar:</th>
+                                      <td class="text-end">890,78</td>
+                                  </tr>
+                                  <tr>
+                                      <th class="text-end" colspan="3">Forma de Pagamento:</th>
+                                      <td class="text-end">Nubank</td>
+                                  </tr>
+                              </tfoot>
+                         </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pedido000012">
+                        <b>Pedido 000010</b>
+                        <span class="mx-1">(realizado em 11/10/2020)</span>
+                      </button>
+                    </h2>
+                    <div id="pedido000012" class="accordion-collapse collapse" data-bs-parent="#divPedidos">
+                      <div class="accordion-body">
+                         <table class="table">
+                             <thead>
+                                  <tr>
+                                      <th>Produto</th>
+                                      <th class="text-end">R$ Unit.</th>
+                                      <th class="text-center">Qtde.</th>
+                                      <th class="text-end">Subtotal</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>Cachecol</td>
+                                      <td class="text-end">32,00</td>
+                                      <td class="text-center">4</td>
+                                      <td class="text-end">234,00</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Cachecol</td>
+                                      <td class="text-end">32,00</td>
+                                      <td class="text-center">4</td>
+                                      <td class="text-end">234,00</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Cachecol</td>
+                                      <td class="text-end">32,00</td>
+                                      <td class="text-center">4</td>
+                                      <td class="text-end">234,00</td>
+                                  </tr>
+                              </tbody>
+                              <tfoot>
+                                  <tr>
+                                      <th class="text-end" colspan="3">Valor dos Produtos:</th>
+                                      <td class="text-end">890,78</td>
+                                  </tr>
+                                  <tr>
+                                      <th class="text-end" colspan="3">Valor do Frete:</th>
+                                      <td class="text-end">23,00</td>
+                                  </tr>
+                                  <tr>
+                                      <th class="text-end" colspan="3">Valor a Pagar:</th>
+                                      <td class="text-end">890,78</td>
+                                  </tr>
+                                  <tr>
+                                      <th class="text-end" colspan="3">Forma de Pagamento:</th>
+                                      <td class="text-end">Nubank</td>
+                                  </tr>
+                              </tfoot>
+                         </table>
+                      </div>
+                    </div>
+                  </div>
+                
+              </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="border-top text-muted bg-light" >
+    <div class="container">
+
+        <div class="row py-3">
+
+            <div class="col-12 col-md-4 pb-2 text-center">
+                &copy; 2021 - Services <br>
+                Loja Online - Brasília <br>
+                CNPJ 99.999.999/0001-99
+            </div>
+
+            <div class="col-12  col-md-4 pb-2 text-center">
+                <a routerLink="privacy" class="text-decoration-none text-dark">
+                    Política de Privacidade
+                </a><br>
+                <a routerLink="terms" class="text-decoration-none text-dark">
+                    Termos de Uso
+                </a><br>
+                <a routerLink="about" class="text-decoration-none text-dark">
+                    Quem somos
+                </a><br>
+                <a routerLink="exchanges" class="text-decoration-none text-dark">
+                    Trocas e Devoluções
+                </a>
+            </div>
+
+            <div class="col-12 col-md-4 text-center">
+                <a href="contact" class="text-decoration-none text-dark">
+                    Contato pelo Site
+                </a><br>
+                E-mail:
+                <a href="mailton:email@dominio.com" class="text-decoration-none text-dark">
+                    email@dominio.com
+                </a><br>
+                Telefone:
+                <a href="phone:61999999999" class="text-decoration-none text-dark">
+                    (21) 99999-0000
+                </a>
+                
+            </div>
+            
+        </div>
+    </div>
+
+</footer>
+
+</div>

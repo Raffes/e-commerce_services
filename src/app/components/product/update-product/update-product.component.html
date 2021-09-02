@@ -1,0 +1,183 @@
+<div class="d-flex flex-column min-vh-100"> 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary--purple border-bottom shadow-sm mb-3" *ngIf="authService.userState as User">
+        <div class="container">
+      
+          <a class="navbar-brand" href="home/{{ User.uid }}">
+            <img class="logo-servise__nav" src="assets/images/logo/logo_service_1.png" alt="logo service">
+          </a>
+      
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse">
+      
+            <ul class="navbar-nav flex-grow-1">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle cl-primary--color fs-5 mt-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Categoria
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Produtos</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Serviços</a></li>
+                </ul>
+              </li>
+            </ul>
+      
+            <div class="align-self-end" >
+      
+              <ul class="navbar-nav">
+                <li class="nav-item me-5">
+                  <span class="badge rounded-pill bg-light color-primary--purple position-absolute ms-3 mt-0" title="5 produtos(s) no carrinho">
+                    <small>3</small>
+                  </span>
+                  <a href="shoppingCart" class="nav-link">
+                    <i class="bi bi-cart fs-5"></i>
+                    
+                  </a>
+                </li>
+                <li class="nav-item me-5">
+                  <a href="userFavorites" class="nav-link">
+                    <i class="bi-suit-heart fs-5"></i>
+                    
+                  </a>
+                </li>
+    
+                <li class="nav-item dropdown" *ngIf="authService.userState as User">
+                  <a class="nav-link dropdown-toggle fs-5" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person-circle fs-5 me-2" ></i> 
+                    {{ User.displayName }}
+                    
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    <li>
+                      <a class="dropdown-item" routerLink="/home/userOrders/{{ User.uid }}">
+                        <i class="bi bi-truck fs-6 me-2"></i> Pedidos
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" routerLink="/home/userProducts/{{ User.uid }}">
+                        <i class="bi bi-basket fs-6 me-2"></i> Vendas
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" routerLink="/home/userInformation/{{ User.uid }}">
+                        <i class="bi bi-tools fs-6 me-2"></i> Dados Pessoais
+                      </a>
+                    </li> 
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                      <a class="dropdown-item" (click)="authService.SignOut()">
+                        <i class="bi-door-open fs-6 me-2"></i>Sair
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+      
+              </ul>
+      
+            </div>
+      
+          </div>
+        </div>
+    </nav>
+
+<div class="container">
+
+    <h1>Atualizar Produto</h1>
+    <div class="row gx-3">
+       
+        <div class="col-12">
+            <form [formGroup]="editProductForm" (ngSubmit)="onSubmit()" class="row mb-3">
+                <div class="col-12 col-md-6 mb-3">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="nomeProduto" formControlName="nameProduct"  autofocus>
+                        <label for="loginEmail">Nome do Produto</label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mb-3">
+                    <div class="form-floating">
+                        <input type="number" class="form-control" id="precoProduto" formControlName="price">
+                        <label for="precoProduto">Valor</label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mb-3">
+                    <input type="file" id="imgProduto" class="form-control" formControlName="imagesProduct" >
+                    <div id="imgProduto" class="form-text">
+                        Adicione uma imagem do seu produto o serviço
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <select class="form-select" id="Categoria" formControlName="category">
+                        <option value="Nenhum" selected>Selecione uma categoria</option>
+                        <option value="Produto">Produto</option>
+                        <option value="Serviço">Serviço</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-12">
+                    <div class="form-floating">
+                        <textarea id="descricaoProduto" class="form-control h-100" rows="10" formControlName="description"></textarea>
+                        <label for="descricaoProduto">Descrição</label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 mt-3 text-end">
+                    <button type="submit" class="btn btn-lg btn-danger"><!--onclick="window.location.href='home'">-->
+                        Atualizar Produto
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- <button (click)="cancel()">cancel</button> -->
+
+<footer class="border-top text-muted bg-light" >
+    <div class="container">
+
+        <div class="row py-3">
+
+            <div class="col-12 col-md-4 pb-2 text-center">
+                &copy; 2021 - Services <br>
+                Loja Online - Brasília <br>
+                CNPJ 99.999.999/0001-99
+            </div>
+
+            <div class="col-12  col-md-4 pb-2 text-center">
+                <a routerLink="privacy" class="text-decoration-none text-dark">
+                    Política de Privacidade
+                </a><br>
+                <a routerLink="terms" class="text-decoration-none text-dark">
+                    Termos de Uso
+                </a><br>
+                <a routerLink="about" class="text-decoration-none text-dark">
+                    Quem somos
+                </a><br>
+                <a routerLink="exchanges" class="text-decoration-none text-dark">
+                    Trocas e Devoluções
+                </a>
+            </div>
+
+            <div class="col-12 col-md-4 text-center">
+                <a href="contact" class="text-decoration-none text-dark">
+                    Contato pelo Site
+                </a><br>
+                E-mail:
+                <a href="mailton:email@dominio.com" class="text-decoration-none text-dark">
+                    email@dominio.com
+                </a><br>
+                Telefone:
+                <a href="phone:61999999999" class="text-decoration-none text-dark">
+                    (21) 99999-0000
+                </a>
+                
+            </div>
+            
+        </div>
+    </div>
+
+</footer>
+
+</div>

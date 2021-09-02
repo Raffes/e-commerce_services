@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Minha Conta</h1>
+    <div class="row gx-3 mb-3">
+        <div class="col-4">
+            <div class="list-group">
+                <button routerLink="/update-userInformation/{{ user.id_uid }}" class="list-group-item list-group-item-action bg-danger text-light">
+                    <i class="bi-person me-2 fs-6"></i> Dados Pessoais
+                </button>
+
+                <button routerLink="/update-userAddress/{{ user.id_uid }}" class="list-group-item list-group-item-action">
+                    <i class="bi-house-door me-2 fs-6"></i> Endereços
+                </button>
+
+                <button routerLink="/update-userPassword/{{ user.id_uid }}" class="list-group-item list-group-item-action">
+                    <i class="bi-lock me-2 fs-6"></i> Alterar Senha
+                </button>
+            </div>
+        </div>
+        <!-- <div class="col-8"> -->
+            
+            <router-outlet></router-outlet>
+            
+        <!-- </div> -->

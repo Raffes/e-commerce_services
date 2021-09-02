@@ -1,0 +1,34 @@
+.caret-icon  {
+    font-size: 16px;
+    line-height: 16px;
+}
+
+
+/* Menu */
+.logo-servise__nav{
+    width: 200px;
+}
+
+.nav-link--login {
+    border-radius: 200px;
+    border-color: white;
+}
+
+.color-primary--purple{
+    color: #da12da;
+}
+
+
+
+.product-img {
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+} 
+
+.product-img__size {
+    height: 224px;
+    object-fit: cover;
+    object-position: center;
+}

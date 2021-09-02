@@ -1,0 +1,31 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>id</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Email</th>
+            <th>cpf</th>
+            <th>senha</th>
+            <th>telefone</th>
+            <th>ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of Users; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <!-- <td>{{ user.id_user }}</td> -->
+            <td>{{ user.displayName }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.cpf }}</td>
+            <td>{{ user.password }}</td>
+            <td>{{ user.phoneNumber }}</td>
+            <td>
+                <button (click)="removeUser(user)">Delete</button>&nbsp;
+                <!-- <button routerLink="/update-user/{{ user.id_user }}">Edit</button> -->
+            </td>
+        </tr>
+    </tbody>
+</table>

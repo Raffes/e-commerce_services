@@ -1,0 +1,277 @@
+
+<div class="d-flex flex-column min-vh-100"> 
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary--purple border-bottom shadow-sm mb-3" *ngIf="authService.userState as User">
+    <div class="container">
+  
+      <a class="navbar-brand" href="home/{{ User.uid }}">
+        <img class="logo-servise__nav" src="assets/images/logo/logo_service_1.png" alt="logo service">
+      </a>
+  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse">
+  
+        <ul class="navbar-nav flex-grow-1">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle cl-primary--color fs-5 mt-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categoria
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink="/home/products/{{ User.uid }}">Produtos</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="/home/services/{{ User.uid }}">Serviços</a></li>
+            </ul>
+          </li>
+        </ul>
+  
+        <div class="align-self-end" >
+  
+          <ul class="navbar-nav">
+            <li class="nav-item me-5">
+              <span class="badge rounded-pill bg-light color-primary--purple position-absolute ms-3 mt-0" title="5 produtos(s) no carrinho">
+                <small>3</small>
+              </span>
+              <a href="/home/shoppingCart/{{ User.uid }}" class="nav-link">
+                <i class="bi bi-cart fs-5"></i>
+                
+              </a>
+            </li>
+            <li class="nav-item me-5">
+              <a href="/home/userFavorites/{{ User.uid }}" class="nav-link">
+                <i class="bi-suit-heart fs-5"></i>
+                
+              </a>
+            </li>
+
+            <li class="nav-item dropdown" *ngIf="authService.userState as User">
+              <a class="nav-link dropdown-toggle fs-5" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle fs-5 me-2" ></i> 
+                {{ user.displayName }}
+                
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item" routerLink="/home/userOrders/{{ User.uid }}">
+                    <i class="bi bi-truck fs-6 me-2"></i> Pedidos
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/home/userProducts/{{ User.uid }}">
+                    <i class="bi bi-basket fs-6 me-2"></i> Vendas
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/home/userInformation/{{ User.uid }}">
+                    <i class="bi bi-tools fs-6 me-2"></i> Dados Pessoais
+                  </a>
+                </li> 
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <a class="dropdown-item" (click)="authService.SignOut()">
+                    <i class="bi-door-open fs-6 me-2"></i>Sair
+                  </a>
+                </li>
+              </ul>
+            </li>
+  
+          </ul>
+  
+        </div>
+  
+      </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <h1>Carrinho de Compras</h1>
+
+    <ul class="list-group mb-3">
+
+        <li class="list-group-item py-3">
+            <div class="row g-3">
+
+                <div class="col-4 col-md-3 col-lg-2">
+                    <a href="#">
+                        <img src="assets/images/produtos/cervejaArtesanal.jpg" alt="produto" class="img-thumbnail product-img">
+                    </a>
+                </div>
+
+                <div class="col-8 col-md-9 col-lg-7 col-xl-8 text-left align-self-center">
+                    <h4>
+                        <b><a href="#" class="text-decoration-none text-danger">Cerveja artesanal</a></b>
+                    </h4>
+                    <h5>
+                      Cerveja feita artesanal, ótima para beber em dias quentes.
+                    </h5>
+                </div>
+
+                <div class="col-6 offset-6 col-sm-6 offset-sm-6 col-md-4 offset-md-8 col-lg-3 offset-lg-0 col-xl-2 align-self-center mt-3">
+                    <div class="input-group">
+                        <button class="btn btn-outline-dark btn-sm" type="button">
+                            <i class="bi-caret-down caret-icon"></i>
+                        </button>
+
+                        <input type="text" class="form-control text-center border-dark" value="4">
+
+                        <button class="btn btn-outline-dark btn-sm" type="button">
+                            <i class="bi-caret-up caret-icon"></i>
+                        </button>
+
+                        <button class="btn btn-outline-danger border-dark btn-sm" type="button">
+                            <i class="bi-trash caret-icon"></i>
+                        </button>
+                    </div>
+                    <div class="text-end mt-2">
+                        <small class="text-secondary">Unidade R$ 65,50</small>
+                        <br>
+                        <span class="text-dark">Valor do item: R$ 262,00</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="list-group-item py-3">
+            <div class="row g-3">
+                <div class="col-4 col-md-3 col-lg-2">
+                    <a href="#">
+                        <img src="assets/images/produtos/chocolate.jpg" class="img-thumbnail product-img ">
+                    </a>
+                </div>
+                <div class="col-8 col-md-9 col-lg-7 col-xl-8 text-left align-self-center">
+                    <h4>
+                        <b><a href="#" class="text-decoration-none text-danger">
+                          Chocolate</a></b>
+                    </h4>
+                    <h5>
+                      Chocolate deliciosos com recheio de sabores diferentes, maravilhoso para da para o seu amor de presente.
+                    </h5>
+                </div>
+                <div
+                    class="col-6 offset-6 col-sm-6 offset-sm-6 col-md-4 offset-md-8 col-lg-3 offset-lg-0 col-xl-2 align-self-center mt-3">
+                    <div class="input-group">
+                        <button class="btn btn-outline-dark btn-sm" type="button">
+                            <i class="bi-caret-down" style="font-size: 16px; line-height: 16px;"></i>
+                        </button>
+                        <input type="text" class="form-control text-center border-dark" value="1">
+                        <button class="btn btn-outline-dark btn-sm" type="button">
+                            <i class="bi-caret-up" style="font-size: 16px; line-height: 16px;"></i>
+                        </button>
+                        <button class="btn btn-outline-danger border-dark btn-sm" type="button">
+                            <i class="bi-trash" style="font-size: 16px; line-height: 16px;"></i>
+                        </button>
+                    </div>
+                    <div class="text-end mt-2">
+                        <small class="text-secondary">Unidade: R$ 88,00</small><br>
+                        <span class="text-dark">Valor do item: R$ 88,00</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="list-group-item py-3">
+            <div class="row g-3">
+                <div class="col-4 col-md-3 col-lg-2">
+                    <a href="#">
+                        <img src="assets/images/produtos/cachecol.jpg" class="img-thumbnail product-img ">
+                    </a>
+                </div>
+                <div class="col-8 col-md-9 col-lg-7 col-xl-8 text-left align-self-center">
+                    <h4>
+                        <b><a href="#" class="text-decoration-none text-danger">
+                          Cachecol</a></b>
+                    </h4>
+                    <h5>
+                      Cachecol branco de tricô feito com linha grossa, maravilhoso para dias frios.
+                    </h5>
+                </div>
+                <div
+                    class="col-6 offset-6 col-sm-6 offset-sm-6 col-md-4 offset-md-8 col-lg-3 offset-lg-0 col-xl-2 align-self-center mt-3">
+                    <div class="input-group">
+                        <button class="btn btn-outline-dark btn-sm" type="button">
+                            <i class="bi-caret-down" style="font-size: 16px; line-height: 16px;"></i>
+                        </button>
+                        <input type="text" class="form-control text-center border-dark" value="2">
+                        <button class="btn btn-outline-dark btn-sm" type="button">
+                            <i class="bi-caret-up" style="font-size: 16px; line-height: 16px;"></i>
+                        </button>
+                        <button class="btn btn-outline-danger border-dark btn-sm" type="button">
+                            <i class="bi-trash" style="font-size: 16px; line-height: 16px;"></i>
+                        </button>
+                    </div>
+                    <div class="text-end mt-2">
+                        <small class="text-secondary">Unidade: R$ 18,00</small><br>
+                        <span class="text-dark">Valor do item: R$ 36,00</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="list-group-item pt-3 pb-0">
+            <div class="text-end">
+                <h4 class="text-dark mb-3">
+                    Valor Total: R$ 386,00
+                </h4>
+                <a routerLink="" class="btn btn-outline-success btn-lg mb-3">
+                    Continuar Comprando
+                </a>
+                <a href="closeAddress" class="btn btn-danger btn-lg ms-2 mb-3">
+                    Fechar Compra
+                </a>
+                
+            </div>
+        </li>
+       
+      </ul>
+</div>
+
+<footer class="border-top text-muted bg-light" >
+    <div class="container">
+
+        <div class="row py-3">
+
+            <div class="col-12 col-md-4 pb-2 text-center">
+                &copy; 2021 - Services <br>
+                Loja Online - Brasília <br>
+                CNPJ 99.999.999/0001-99
+            </div>
+
+            <div class="col-12  col-md-4 pb-2 text-center">
+                <a routerLink="privacy" class="text-decoration-none text-dark">
+                    Política de Privacidade
+                </a><br>
+                <a routerLink="terms" class="text-decoration-none text-dark">
+                    Termos de Uso
+                </a><br>
+                <a routerLink="about" class="text-decoration-none text-dark">
+                    Quem somos
+                </a><br>
+                <a routerLink="exchanges" class="text-decoration-none text-dark">
+                    Trocas e Devoluções
+                </a>
+            </div>
+
+            <div class="col-12 col-md-4 text-center">
+                <a href="contact" class="text-decoration-none text-dark">
+                    Contato pelo Site
+                </a><br>
+                E-mail:
+                <a href="mailton:email@dominio.com" class="text-decoration-none text-dark">
+                    email@dominio.com
+                </a><br>
+                Telefone:
+                <a href="phone:61999999999" class="text-decoration-none text-dark">
+                    (21) 99999-0000
+                </a>
+                
+            </div>
+            
+        </div>
+    </div>
+
+</footer>
+</div>

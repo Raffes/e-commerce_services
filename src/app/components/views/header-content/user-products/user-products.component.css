@@ -1,0 +1,25 @@
+/* Menu */
+.logo-servise__nav{
+    width: 200px;
+}
+
+.nav-link--login {
+    border-radius: 200px;
+    border-color: white;
+}
+
+.color-primary--purple{
+    color: #da12da;
+}
+
+.h-body{
+    height: 780px;
+}
+
+.i_warning {
+    color: orange;
+}
+
+.i_danger {
+    color: rgb(163, 48, 48);
+}

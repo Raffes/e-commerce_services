@@ -1,0 +1,454 @@
+<div class="d-flex flex-column min-vh-100"> 
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary--purple border-bottom shadow-sm mb-3" *ngIf="authService.userState as User">
+        <div class="container">
+      
+          <a class="navbar-brand" href="home/{{ User.uid }}">
+            <img class="logo-servise__nav" src="assets/images/logo/logo_service_1.png" alt="logo service">
+          </a>
+      
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse">
+      
+            <ul class="navbar-nav flex-grow-1">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle cl-primary--color fs-5 mt-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Categoria
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" routerLink="/home/products/{{ User.uid }}">Produtos</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" routerLink="/home/services/{{ User.uid }}">Serviços</a></li>
+                </ul>
+              </li>
+            </ul>
+      
+            <div class="align-self-end" >
+      
+              <ul class="navbar-nav">
+                <li class="nav-item me-5">
+                  <span class="badge rounded-pill bg-light color-primary--purple position-absolute ms-3 mt-0" title="5 produtos(s) no carrinho">
+                    <small>3</small>
+                  </span>
+                  <a href="/home/shoppingCart/{{ User.uid }}" class="nav-link">
+                    <i class="bi bi-cart fs-5"></i>
+                    
+                  </a>
+                </li>
+                <li class="nav-item me-5">
+                  <a href="/home/userFavorites/{{ User.uid }}" class="nav-link">
+                    <i class="bi-suit-heart fs-5"></i>
+                    
+                  </a>
+                </li>
+    
+                <li class="nav-item dropdown" *ngIf="authService.userState as User">
+                  <a class="nav-link dropdown-toggle fs-5" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person-circle fs-5 me-2" ></i> 
+                    {{ User.displayName }}
+                    
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    <li>
+                      <a class="dropdown-item" routerLink="/home/userOrders/{{ User.uid }}">
+                        <i class="bi bi-truck fs-6 me-2"></i> Pedidos
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" routerLink="/home/userProducts/{{ User.uid }}">
+                        <i class="bi bi-basket fs-6 me-2"></i> Vendas
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" routerLink="/home/userInformation/{{ User.uid }}">
+                        <i class="bi bi-tools fs-6 me-2"></i> Dados Pessoais
+                      </a>
+                    </li> 
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                      <a class="dropdown-item" (click)="authService.SignOut()">
+                        <i class="bi-door-open fs-6 me-2"></i>Sair
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+      
+              </ul>
+      
+            </div>
+      
+          </div>
+        </div>
+    </nav>
+        
+    
+    
+    <div class="container">
+        <div class="row">
+      
+          <div class="col-12 col-md-5">
+            <form class="justify-content-center justify-content-md-start mb-3 mb-md-0">
+      
+              <div class="input-group input-group-sm">
+      
+                <input type="text" class="form-control" placeholder="Pesquise aqui">
+      
+                <button class="btn btn-primary--color" type="button">Buscar</button>
+      
+              </div>
+            </form>
+          </div>
+      
+          <div class="col-12 col-md-7">
+            <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
+              <form class="d-inline-block">
+      
+                <select class="form-select form-select-sm">
+                  <option value="">Ordenar produtos por</option>
+                  <option value="">Ordenar pelo nome</option>
+                  <option value="">Ordenar pelo menor preço</option>
+                  <option value="">Ordenar pelo maior preço</option>
+                </select>
+      
+              </form>
+      
+              <nav class="d-inline-block me-3">
+                <ul class="pagination pagination-sm my-0">
+                  <li class="page-item">
+                    <a class="page-link" href="#">1</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                  </li>
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#">3</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">4</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">5</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">6</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+      
+        </div>
+      
+        <hr class="mt-3">
+      
+        <div class="row g-3" *ngIf="authService.userState as user">
+     
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+          
+            <div class="card product-card__body text-center bg-light">
+              <small class="fw-bold cl-primary--color">Serviço</small>
+              
+              <a href="#" class="position-absolute end-0 p-2 text-danger">
+                <i class="bi-suit-heart-fill icon-heart"></i>
+              </a>
+              
+              <a routerLink="/product/ {{ user.uid }}">
+                <img src="assets/images/servicos/ele.jpg" class="card-img-top product-card__img" alt="cachecol">
+              </a>
+              
+      
+              <div class="card-header">
+                R$ 32,50
+              </div>
+      
+              <a href="#" class="card-body product-card__link">
+                <h5 class="card-title">Eletricista</h5>
+      
+                <p class="card-text truncar-3l">
+                  Precisa de ajudar para arrumar sua parte eltrica da sua casa?
+                  não se preocupe porquê tenho anos de experiência em mexer com eletricidade
+                  e posso fazer em um valor que seja consideravel para quem me contratar.
+                </p>
+              </a>
+      
+              <div class="card-footer">
+                <a href="https://wa.me/61993946207" class="btn btn-secundary--color d-block">
+                  <i class="bi bi-chat-dots fs-5"></i> Mandar mensagem
+                </a>
+              </div>
+            </div>
+      
+          </div>
+    
+    
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+          
+            <div class="card product-card__body text-center bg-light">
+              <small class="fw-bold cl-primary--color">Serviço</small>
+              <a href="#" class="position-absolute end-0 p-2 text-danger">
+                <i class="bi-suit-heart icon-heart"></i>
+              </a>
+              
+              <a routerLink="/product/ {{ user.uid }}">
+                <img src="assets/images/servicos/desenho.jpg" class="card-img-top product-card__img" alt="desenhos personalizado">
+              </a>
+              
+      
+              <div class="card-header">
+                R$ 12,50
+              </div>
+      
+              <a href="#" class="card-body product-card__link">
+                <h5 class="card-title">Encomenda de desenho</h5>
+      
+                <p class="card-text truncar-3l">
+                  Faço desenhos encomendados, folha A4 por R$ 12,50.
+                </p>
+              </a>
+      
+              <div class="card-footer">
+                <a href="https://wa.me/61993946207" class="btn btn-secundary--color d-block">
+                  <i class="bi bi-chat-dots fs-5"></i> Mandar mensagem
+                </a>
+              </div>
+            </div>
+      
+          </div>
+
+    
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+          
+            <div class="card product-card__body text-center bg-light">
+              <small class="fw-bold cl-primary--color">Serviço</small>
+              <a href="#" class="position-absolute end-0 p-2 text-danger">
+                <i class="bi-suit-heart icon-heart"></i>
+              </a>
+              
+              <a routerLink="/product/ {{ user.uid }}">
+                <img src="assets/images/servicos/encanador.jpg" class="card-img-top product-card__img" alt="encanador">
+              </a>
+              
+      
+              <div class="card-header">
+                R$ A combinar.
+              </div>
+      
+              <a href="#" class="card-body product-card__link">
+                <h5 class="card-title">Encanador</h5>
+      
+                <p class="card-text truncar-3l">
+                  Presto serviços de encanador.
+                </p>
+              </a>
+      
+              <div class="card-footer">
+                <a href="https://wa.me/61993946207" class="btn btn-secundary--color d-block">
+                  <i class="bi bi-chat-dots fs-5"></i> Mandar mensagem
+                </a>
+              </div>
+            </div>
+      
+          </div>
+    
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+          
+            <div class="card product-card__body text-center bg-light">
+              <small class="fw-bold cl-primary--color">Serviço</small>
+              <a href="#" class="position-absolute end-0 p-2 text-danger">
+                <i class="bi-suit-heart icon-heart"></i>
+              </a>
+              
+              <a routerLink="/product/ {{ user.uid }}">
+                <img src="assets/images/servicos/maquiagem.jpg" class="card-img-top product-card__img" alt="maquiadora">
+              </a>
+              
+      
+              <div class="card-header">
+                R$ 102,00
+              </div>
+      
+              <a href="#" class="card-body product-card__link">
+                <h5 class="card-title">Maquiadora</h5>
+      
+                <p class="card-text truncar-3l">
+                  Maquiadora profissional, o valor pode variar pelo tipo maquiagem solicitada.
+                </p>
+              </a>
+      
+              <div class="card-footer">
+                <a href="https://wa.me/61993946207" class="btn btn-secundary--color d-block">
+                  <i class="bi bi-chat-dots fs-5"></i> Mandar mensagem
+                </a>
+              </div>
+            </div>
+      
+          </div>
+    
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+          
+            <div class="card product-card__body text-center bg-light">
+              <small class="fw-bold cl-primary--color">Serviço</small>
+              <a href="#" class="position-absolute end-0 p-2 text-danger">
+                <i class="bi-suit-heart icon-heart"></i>
+              </a>
+              
+              <a routerLink="/product/ {{ user.uid }}">
+                <img src="assets/images/servicos/marmitasPersonalizadas.jpg" class="card-img-top product-card__img" alt="marmitass personalizadas">
+              </a>
+              
+      
+              <div class="card-header">
+                R$ 25,00.
+              </div>
+      
+              <a href="#" class="card-body product-card__link">
+                <h5 class="card-title">Marmita personalizada</h5>
+      
+                <p class="card-text truncar-3l">
+                  Peça sua marmita do jeito que desejar e lhe enviamos.
+                </p>
+              </a>
+      
+              <div class="card-footer">
+                <a href="https://wa.me/61993946207" class="btn btn-secundary--color d-block">
+                  <i class="bi bi-chat-dots fs-5"></i> Mandar mensagem
+                </a>
+              </div>
+            </div>
+      
+          </div>
+    
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+          
+            <div class="card product-card__body text-center bg-light">
+              <small class="fw-bold cl-primary--color">Serviço</small>
+              <a href="#" class="position-absolute end-0 p-2 text-danger">
+                <i class="bi-suit-heart-fill icon-heart"></i>
+              </a>
+              
+              <a routerLink="/product/ {{ user.uid }}">
+                <img src="assets/images/servicos/sites.jpg" class="card-img-top product-card__img" alt="criador de sites">
+              </a>
+              
+      
+              <div class="card-header">
+                R$ 1.000,00
+              </div>
+      
+              <a href="#" class="card-body product-card__link">
+                <h5 class="card-title">Encomende seu site</h5>
+      
+                <p class="card-text truncar-3l">
+                  Sempre sonhou em colocar seu negocio em um site? Me envie uma mensagem para encomendar a criação.
+                </p>
+              </a>
+      
+              <div class="card-footer">
+                <a href="https://wa.me/61993946207" class="btn btn-secundary--color d-block">
+                  <i class="bi bi-chat-dots fs-5"></i> Mandar mensagem
+                </a>
+              </div>
+            </div>
+      
+          </div>
+                
+      
+        </div>
+      
+        <hr class="mt-5">
+      
+        <div class="row pb-3">
+      
+          <div class="col-12">
+            <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
+              <form class="d-inline-block">
+      
+                <select class="form-select form-select-sm">
+                  <option value="">Ordenar produtos por</option>
+                  <option value="">Ordenar pelo nome</option>
+                  <option value="">Ordenar pelo menor preço</option>
+                  <option value="">Ordenar pelo maior preço</option>
+                </select>
+      
+              </form>
+      
+              <nav class="d-inline-block me-3">
+                <ul class="pagination pagination-sm my-0">
+                  <li class="page-item">
+                    <a class="page-link" href="#">1</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                  </li>
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#">3</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">4</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">5</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">6</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+      
+        </div>
+      
+      </div>
+    
+      
+      <footer class="border-top text-muted bg-light" >
+        <div class="container">
+    
+            <div class="row py-3">
+    
+                <div class="col-12 col-md-4 pb-2 text-center">
+                    &copy; 2021 - Services <br>
+                    Loja Online - Brasília <br>
+                    CNPJ 99.999.999/0001-99
+                </div>
+    
+                <div class="col-12  col-md-4 pb-2 text-center">
+                    <a routerLink="privacy" class="text-decoration-none text-dark">
+                        Política de Privacidade
+                    </a><br>
+                    <a routerLink="terms" class="text-decoration-none text-dark">
+                        Termos de Uso
+                    </a><br>
+                    <a routerLink="about" class="text-decoration-none text-dark">
+                        Quem somos
+                    </a><br>
+                    <a routerLink="exchanges" class="text-decoration-none text-dark">
+                        Trocas e Devoluções
+                    </a>
+                </div>
+    
+                <div class="col-12 col-md-4 text-center">
+                    <a href="contact" class="text-decoration-none text-dark">
+                        Contato pelo Site
+                    </a><br>
+                    E-mail:
+                    <a href="mailton:email@dominio.com" class="text-decoration-none text-dark">
+                        email@dominio.com
+                    </a><br>
+                    Telefone:
+                    <a href="phone:61999999999" class="text-decoration-none text-dark">
+                        (21) 99999-0000
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+    
+    </footer>
+    </div>

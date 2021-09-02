@@ -1,0 +1,22 @@
+/* Menu */
+.logo-servise__nav{
+    width: 200px;
+}
+
+.nav-link--login {
+    border-radius: 200px;
+    border-color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.color-primary--purple{
+    color: #49A0D2;
+}
+

@@ -1,0 +1,23 @@
+<div class="container">
+    
+    <h1>Obrigada pelo seu cadastro!</h1>
+                
+    <hr>
+    
+    <p>
+        Caro cliente,
+    </p>
+    
+    <p *ngIf="authUserService.userState as user">
+        Favor confirmar cadastramento no e-mail <b>{{ user.email }}</b>. 
+    </p>
+    
+    <button type="button" class="btn btn-lg btn-danger" (click)="authUserService.SendVerificationMail()"> <!--onclick="window.location.href='confirmNewPassword'"-->
+        Reenviar verificação no email
+    </button>
+    
+    <p>
+        <a routerLink="home" class="btn btn-lg">Voltar à Página Principal</a>
+    
+    </p>
+</div>

@@ -1,0 +1,101 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary--purple border-bottom shadow-sm mb-3" *ngIf="authService.userState as User">
+    <div class="container">
+  
+      <a class="navbar-brand" href="home/{{ User.uid }}">
+        <img class="logo-servise__nav" src="assets/images/logo/logo_service_1.png" alt="logo service">
+      </a>
+  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse">
+  
+        <ul class="navbar-nav flex-grow-1">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle cl-primary--color fs-5 mt-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categoria
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink="/home/products/{{ User.uid }}">Produtos</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="/home/services/{{ User.uid }}">Serviços</a></li>
+            </ul>
+          </li>
+        </ul>
+  
+        <div class="align-self-end" >
+  
+          <ul class="navbar-nav">
+            <li class="nav-item me-5">
+              <span class="badge rounded-pill bg-light color-primary--purple position-absolute ms-3 mt-0" title="5 produtos(s) no carrinho">
+                <small>3</small>
+              </span>
+              <a href="/home/shoppingCart/{{ User.uid }}" class="nav-link">
+                <i class="bi bi-cart fs-5"></i>
+                
+              </a>
+            </li>
+            <li class="nav-item me-5">
+              <a href="/home/userFavorites/{{ User.uid }}" class="nav-link">
+                <i class="bi-suit-heart fs-5"></i>
+                
+              </a>
+            </li>
+
+            <li class="nav-item dropdown" *ngIf="authService.userState as User">
+              <a class="nav-link dropdown-toggle fs-5" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle fs-5 me-2" ></i> 
+                {{ user.displayName }}
+                
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item" routerLink="/home/userOrders/{{ User.uid }}">
+                    <i class="bi bi-truck fs-6 me-2"></i> Pedidos
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/home/userProducts/{{ User.uid }}">
+                    <i class="bi bi-basket fs-6 me-2"></i> Vendas
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/home/userInformation/{{ User.uid }}">
+                    <i class="bi bi-tools fs-6 me-2"></i> Dados Pessoais
+                  </a>
+                </li> 
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <a class="dropdown-item" (click)="authService.SignOut()">
+                    <i class="bi-door-open fs-6 me-2"></i>Sair
+                  </a>
+                </li>
+              </ul>
+            </li>
+  
+          </ul>
+  
+        </div>
+  
+      </div>
+    </div>
+</nav>
+
+<div class="dropzone" 
+     dropzone
+     (hovered)="toggleHover($event)"
+     (dropped)="onDrop($event)"
+     [class.hovering]="isHovering">
+
+
+     <h3>AngularFire Drop Zone</h3>
+     <p>Drag and Drop a File</p>
+</div>
+
+<h3>Uploads</h3>
+
+<div *ngFor="let file of files">
+  <upload-details [file]="file"></upload-details>
+</div>

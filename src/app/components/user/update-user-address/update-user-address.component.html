@@ -1,0 +1,47 @@
+<div class="container">
+    <h1>Minha Conta</h1>
+    <div class="row gx-3 mb-3">
+        <div class="col-4">
+            <div class="list-group">
+                <a href="userInformation/update-userInformation/{{ user.id_uid }}" class="list-group-item list-group-item-action">
+                    <i class="bi-person me-2 fs-6"></i> Dados Pessoais
+                </a>
+
+                <button routerLink="userInformation/update-userAddress/{{ user.id_uid }}" class="list-group-item list-group-item-action  bg-danger text-light">
+                    <i class="bi-house-door me-2 fs-6"></i> Endereços
+                </button>
+
+                <button routerLink="userInformation/update-userPassword/{{ user.id_uid }}" class="list-group-item list-group-item-action">
+                    <i class="bi-lock me-2 fs-6"></i> Alterar Senha
+                </button>
+            </div>
+        </div>
+        <div class="col-8">
+            <form [formGroup]="editUserAddress" (ngSubmit)="onSubmit()">
+                <div class="form-floating mb-3 col-md-6 col-lg-4">
+                    <input type="number" class="form-control"id="txtCEP" formControlName="cep" autofocus>
+                    <label for="txtCEP">CEP</label> 
+                </div>
+                <div class="mb-3 col-md-6 col-lg-8">
+                    <textarea class="form-control text-muted bg-light client-address__textarea" 
+                    disabled>Digite o CEP para burcarmos o endereço.</textarea>
+                </div>
+                <div class="form-floating mb-3 col-md-4">
+                    <input type="number" class="form-control" id="txNumero" formControlName="numberHouse">
+                    <label for="txNumero">Número</label> 
+                </div>
+                <div class="form-floating mb-3 col-md-8">
+                    <input type="number" class="form-control" id="txtComplemento" formControlName="complement">
+                    <label for="txtComplemento">Complemento</label> 
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtReferencia" formControlName="referenceHouse">
+                    <label for="txtReferencia">Referência</label> 
+                </div>
+                <button type="button" class="btn btn-lg btn-danger" onclick="window.location.alert='#'">
+                    Alterar Endereço
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

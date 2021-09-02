@@ -1,0 +1,14 @@
+/* Menu */
+.logo-servise__nav{
+    width: 200px;
+}
+
+.nav-link--login {
+    border-radius: 200px;
+    border-color: white;
+}
+
+.color-primary--purple{
+    color: #da12da;
+}
+

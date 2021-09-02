@@ -1,0 +1,114 @@
+<div class="d-flex flex-column min-vh-100"> 
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary--purple border-bottom shadow-sm mb-3">
+      <div class="container-fluid">
+    
+        <a class="navbar-brand" href="/">
+          <img class="logo-servise__nav" src="assets/images/logo/logo_service_1.png" alt="logo service">
+        </a>
+    
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse">
+    
+          <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle fs-5" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categoria
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Arte</a></li>
+                <li><a class="dropdown-item" href="#">Sites</a></li>
+                <li><a class="dropdown-item" href="#">Serviços</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Outros</a></li>
+              </ul>
+            </li>
+          </ul>
+    
+          <div class="align-self-end">
+    
+            <ul class="navbar-nav">
+              <!-- <li class="nav-item me-5">
+                <span class="badge rounded-pill bg-light color-primary--purple position-absolute ms-3 mt-0" title="5 produtos(s) no carrinho">
+                  <small>3</small>
+                </span>
+                <a href="shoppingCart" class="nav-link">
+                  <i class="bi bi-cart fs-5"></i>
+                  
+                </a>
+              </li> -->
+              <!-- <li class="nav-item me-5">
+                <a href="registerProduct" class="nav-link">
+                  <i class="bi bi-box-arrow-in-down fs-5"></i>
+                  
+                </a>
+              </li> -->
+              <li class="nav-item">
+                <a [routerLink]="['/login']" class="nav-link nav-link--login fs-5">Entrar</a>
+              </li>
+              <li class="nav-item">
+                <a href="createUser" class="nav-link nav-link--singUp fs-5">Cadastrar</a>
+              </li>
+            </ul>
+    
+          </div>
+    
+        </div>
+      </div>
+    </nav>
+
+    
+    
+    <main class="flex-fill"> 
+        <router-outlet></router-outlet>
+    </main>
+  
+    <footer class="border-top text-muted bg-light" >
+      <div class="container">
+  
+          <div class="row py-3">
+  
+              <div class="col-12 col-md-4 pb-2 text-center">
+                  &copy; 2021 - Services <br>
+                  Loja Online - Brasília <br>
+                  CNPJ 99.999.999/0001-99
+              </div>
+  
+              <div class="col-12  col-md-4 pb-2 text-center">
+                  <a routerLink="privacy" class="text-decoration-none text-dark">
+                      Política de Privacidade
+                  </a><br>
+                  <a routerLink="terms" class="text-decoration-none text-dark">
+                      Termos de Uso
+                  </a><br>
+                  <a routerLink="about" class="text-decoration-none text-dark">
+                      Quem somos
+                  </a><br>
+                  <a routerLink="exchanges" class="text-decoration-none text-dark">
+                      Trocas e Devoluções
+                  </a>
+              </div>
+  
+              <div class="col-12 col-md-4 text-center">
+                  <a href="contact" class="text-decoration-none text-dark">
+                      Contato pelo Site
+                  </a><br>
+                  E-mail:
+                  <a href="mailton:email@dominio.com" class="text-decoration-none text-dark">
+                      email@dominio.com
+                  </a><br>
+                  Telefone:
+                  <a href="phone:61999999999" class="text-decoration-none text-dark">
+                      (21) 99999-0000
+                  </a>
+                  
+              </div>
+              
+          </div>
+      </div>
+  
+  </footer>
+</div>

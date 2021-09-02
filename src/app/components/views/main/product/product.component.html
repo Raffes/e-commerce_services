@@ -1,0 +1,208 @@
+<div class="d-flex flex-column min-vh-100"> 
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary--purple border-bottom shadow-sm mb-3" *ngIf="authService.userState as User">
+    <div class="container">
+  
+      <a class="navbar-brand" href="home/{{ User.uid }}">
+        <img class="logo-servise__nav" src="assets/images/logo/logo_service_1.png" alt="logo service">
+      </a>
+  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse">
+  
+        <ul class="navbar-nav flex-grow-1">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle cl-primary--color fs-5 mt-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categoria
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink="/home/products/{{ User.uid }}">Produtos</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="/home/services/{{ User.uid }}">Serviços</a></li>
+            </ul>
+          </li>
+        </ul>
+  
+        <div class="align-self-end" >
+  
+          <ul class="navbar-nav">
+            <li class="nav-item me-5">
+              <span class="badge rounded-pill bg-light color-primary--purple position-absolute ms-3 mt-0" title="5 produtos(s) no carrinho">
+                <small>3</small>
+              </span>
+              <a href="/home/shoppingCart/{{ User.uid }}" class="nav-link">
+                <i class="bi bi-cart fs-5"></i>
+                
+              </a>
+            </li>
+            <li class="nav-item me-5">
+              <a href="/home/userFavorites/{{ User.uid }}" class="nav-link">
+                <i class="bi-suit-heart fs-5"></i>
+                
+              </a>
+            </li>
+
+            <li class="nav-item dropdown" *ngIf="authService.userState as User">
+              <a class="nav-link dropdown-toggle fs-5" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle fs-5 me-2" ></i> 
+                {{ user.displayName }}
+                
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item" routerLink="/home/userOrders/{{ User.uid }}">
+                    <i class="bi bi-truck fs-6 me-2"></i> Pedidos
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/home/userProducts/{{ User.uid }}">
+                    <i class="bi bi-basket fs-6 me-2"></i> Vendas
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/home/userInformation/{{ User.uid }}">
+                    <i class="bi bi-tools fs-6 me-2"></i> Dados Pessoais
+                  </a>
+                </li> 
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <a class="dropdown-item" (click)="authService.SignOut()">
+                    <i class="bi-door-open fs-6 me-2"></i>Sair
+                  </a>
+                </li>
+              </ul>
+            </li>
+  
+          </ul>
+  
+        </div>
+  
+      </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row g-3 h-size" *ngFor="let img of Images">
+        <div class="col-12 col-sm-6" >
+            <img src="{{ img.downloadURL }}" alt="cachecol" class="img-thumbnail product-img" id="cachecolProduto">
+            <br class="clearfix">
+
+            <!-- <div class="row my-3 gx-3">
+                <div class="col-3 product-img__size">
+                    <img src="assets/images/produtos/cachecol-croche-de-la-com-franja-la.jpg" alt="cachecol" class="img-thumbnail" onclick="trocarImagem(this)">
+                </div>
+
+                <div class="col-3 product-img__size">
+                    <img src="assets/images/produtos/ele.jpg" alt="cachecol" class="img-thumbnail" onclick="trocarImagem(this)">
+                </div>
+
+                <div class="col-3 product-img__size">
+                    <img src="assets/images/produtos/Entenda-por-que-o-mercado-de-cerveja-artesanal-cresceu-tanto-no-Brasil.jpg" alt="cachecol" class="img-thumbnail" onclick="trocarImagem(this)">
+                </div>
+
+                <div class="col-3 product-img__size">
+                    <img src="assets/images/produtos/fto_ft1_169649.jpg" alt="cachecol" class="img-thumbnail" onclick="trocarImagem(this)">
+                </div>
+            </div> -->
+
+        </div>
+
+        <div class="col-12 col-sm-6" *ngFor="let product of Products"> 
+          <h1>{{ product.nameProduct }}</h1>
+          <p><strong>Valor:</strong> {{ product.price }}</p>
+          <p><strong>Vendidos por:</strong> <a href="#" class="product-card__link mx-2">{{ user.displayName }}</a>  </p>
+          <p>
+            {{ product.description }}
+          </p>
+          <!-- <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum, ratione! Deserunt molestiae perspiciatis et 
+              suscipit ex necessitatibus consequatur neque dicta similique cupiditate. Nam architecto eaque deserunt eveniet 
+              ugiat sint vitae?
+          </p> -->
+          <p>
+              <button class="btn btn-lg btn-primary--color me-2 mb-3 mb-xl-0">
+                  <i class="bi-cart"></i>Adicionar ao Carrinho
+              </button>
+
+              <button class="btn btn-lg btn-outline-danger">
+                  <i class="bi-heart"></i>Adicionar aos Favoritos
+              </button>
+          </p>
+      </div>
+
+            <!-- <div class="col-12 col-sm-6">
+                <h1>Chocolate</h1>
+                <p><strong>Valor:</strong> 88,00</p>
+                <p><strong>Vendidos por:</strong> <a href="#" class="product-card__link mx-2">Luciele</a>  </p>
+                <p>
+                  Chocolate deliciosos com recheio de sabores diferentes, maravilhoso para da para o seu amor de presente.
+                </p>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum, ratione! Deserunt molestiae perspiciatis et 
+                    suscipit ex necessitatibus consequatur neque dicta similique cupiditate. Nam architecto eaque deserunt eveniet 
+                    ugiat sint vitae?
+                </p>
+                <p>
+                    <button class="btn btn-lg btn-primary--color me-2 mb-3 mb-xl-0">
+                        <i class="bi-cart"></i>Adicionar ao Carrinho
+                    </button>
+
+                    <button class="btn btn-lg btn-outline-danger">
+                        <i class="bi-heart"></i>Adicionar aos Favoritos
+                    </button>
+                </p>
+            </div> -->
+        </div>
+</div>
+
+
+<footer class="border-top text-muted bg-light" >
+    <div class="container">
+
+        <div class="row py-3">
+
+            <div class="col-12 col-md-4 pb-2 text-center">
+                &copy; 2021 - Services <br>
+                Loja Online - Brasília <br>
+                CNPJ 99.999.999/0001-99
+            </div>
+
+            <div class="col-12  col-md-4 pb-2 text-center">
+                <a routerLink="privacy" class="text-decoration-none text-dark">
+                    Política de Privacidade
+                </a><br>
+                <a routerLink="terms" class="text-decoration-none text-dark">
+                    Termos de Uso
+                </a><br>
+                <a routerLink="about" class="text-decoration-none text-dark">
+                    Quem somos
+                </a><br>
+                <a routerLink="exchanges" class="text-decoration-none text-dark">
+                    Trocas e Devoluções
+                </a>
+            </div>
+
+            <div class="col-12 col-md-4 text-center">
+                <a href="contact" class="text-decoration-none text-dark">
+                    Contato pelo Site
+                </a><br>
+                E-mail:
+                <a href="mailton:email@dominio.com" class="text-decoration-none text-dark">
+                    email@dominio.com
+                </a><br>
+                Telefone:
+                <a href="phone:61999999999" class="text-decoration-none text-dark">
+                    (21) 99999-0000
+                </a>
+                
+            </div>
+            
+        </div>
+    </div>
+
+</footer>
+</div>

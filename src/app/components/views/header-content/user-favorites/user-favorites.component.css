@@ -1,0 +1,57 @@
+.icon-x {
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.product-card__body {
+    height: 488px;
+}
+
+.icon-heart {
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.product-card__img {
+    height: 224px;
+    object-fit: cover;
+    object-position: center;
+} 
+
+.product-card__link {
+    text-decoration: none;
+    color:inherit;
+}
+
+p.truncar-3l {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+/* Menu */
+.logo-servise__nav{
+    width: 200px;
+}
+
+.nav-link--login {
+    border-radius: 200px;
+    border-color: white;
+}
+
+.color-primary--purple{
+    color: #da12da;
+}
+
+
+
+.product-img {
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+} 

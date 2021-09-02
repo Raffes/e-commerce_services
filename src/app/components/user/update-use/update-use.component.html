@@ -1,0 +1,35 @@
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-3">
+        <label>Name</label>
+        <input type="text" formControlName="nameUser" required>
+    </div>
+
+    <div class="mb-3">
+        <label>lastname</label>
+        <input type="text" formControlName="lastname"  required>
+    </div>
+    
+    <div class="mb-3">
+        <label>email</label>
+        <input type="email" formControlName="email"  required>
+    </div>
+
+    <div class="mb-3">
+        <label>phone</label>
+        <input type="number" formControlName="phone"  required>
+    </div>
+
+    <div class="mb-3">
+        <label>cpf</label>
+        <input type="number" formControlName="cpf"  required>
+    </div>
+
+    <div class="mb-3">
+        <label>password</label>
+        <input type="password" formControlName="password"   required>
+    </div>
+
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+</form>
